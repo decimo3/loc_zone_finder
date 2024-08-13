@@ -64,7 +64,8 @@ public class Database : IDisposable
     this.command.CommandText =
         @"SELECT nome, tipo, lat, lon FROM templates
         WHERE lat >= @lat_min AND lat <= @lat_max
-        AND lon >= @lon_min AND lon <= @lon_max";
+        AND lon >= @lon_min AND lon <= @lon_max
+        AND tipo = 'ZNA' LIMIT 5";
 
     this.command.Parameters.AddWithValue("@lat_min", lat_min);
     this.command.Parameters.AddWithValue("@lat_max", lat_max);
@@ -85,7 +86,7 @@ public class Database : IDisposable
         });
       }
     }
-    return templates.Where(t => t.Tipo == "ZNA").OrderBy(t => t.Mts).ToList();
+    return templates.OrderBy(t => t.Mts).ToList();
   }
 
   public void Dispose()
