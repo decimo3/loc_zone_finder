@@ -7,7 +7,7 @@
     <ApplicationIcon>appicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.117" />
     <None Include="appicon.ico" CopyToOutputDirectory="PreserveNewest" />
     <None Include="gps.db" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
