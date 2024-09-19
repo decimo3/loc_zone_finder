@@ -1,4 +1,4 @@
-﻿namespace ZoneLocator;
+namespace ZoneLocator;
 public static class Localizador
 {
   public static void Main(String[] args)
@@ -19,7 +19,13 @@ public static class Localizador
         var templates = database.GetTemplates(latitude, longitude, 1_000);
         if(!templates.Any())
         {
-          Console.WriteLine("Não foi encontrado nenhum equipamento próximo a sua localização!");
+          Console.WriteLine("404: Não foi encontrado nenhum equipamento próximo a sua localização!");
+          System.Environment.Exit(-1);
+        }
+        if(args.Contains("--json"))
+        {
+          var json = System.Text.Json.JsonSerializer.Serialize(templates);
+          Console.WriteLine(json);
           System.Environment.Exit(0);
         }
         Console.WriteLine(new String('#', 40));
